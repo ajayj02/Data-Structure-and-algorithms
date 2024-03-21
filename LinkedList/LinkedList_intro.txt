@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+//creating a node for the list
+class Node{
+ public:
+  int data;
+  Node* next;
+
+  public:
+  Node(int data) {
+    this->data = data;
+    this->next = nullptr;
+  }
+};
+
+void insertElement(Node* head, int newData) { 
+
+    Node* newElement = new Node(newData);
+
+    if(head->next == nullptr) {
+        head->next = newElement;
+        return;
+    }
+
+    while(head!=nullptr) {
+        head = head->next;
+    }
+    newElement->next = head->next;
+    head->next = newElement;
+
+}
+
+void showList(Node* head) {
+    while(head!=nullptr) {
+        cout<<head->data<<endl;
+        head = head->next;
+    }
+}
+
+int main() {
+  Node* firstElement = new Node(3);
+  showList(firstElement);
+  cout<<"check"<<endl;
+  insertElement(firstElement,5);
+  showList(firstElement);
+}
